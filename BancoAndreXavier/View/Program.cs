@@ -17,8 +17,7 @@ namespace BancoAndreXavier.View
             string opcao = null;
             Conta conta = new Conta();
             Movimentacao movimentacao = new Movimentacao();
-
-
+            
             do
             {
                 Console.Clear();
@@ -53,7 +52,7 @@ namespace BancoAndreXavier.View
                             }
                             else
                             {
-                                
+                             
                                 Console.WriteLine("Não foi possível adicionar a Conta!");
                             }
                         

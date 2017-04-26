@@ -15,9 +15,6 @@ namespace BancoAndreXavier.Model
         
         public DateTime DataAberturaConta { get; set; }
         public Movimentacao MovimentacaoConta { get; set; }
-
-        
-        
         
         public override string ToString()
         {
