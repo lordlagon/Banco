@@ -17,7 +17,7 @@ namespace BancoAndreXavier.View
             string opcao = null;
             Conta conta = new Conta();
             Movimentacao movimentacao = new Movimentacao();
-            
+
             do
             {
                 Console.Clear();
@@ -43,20 +43,21 @@ namespace BancoAndreXavier.View
                         conta.NomeCliente = Console.ReadLine();
                         Console.WriteLine("Digite o saldo inicial da Conta: ");
                         conta.SaldoInicial = Convert.ToDouble(Console.ReadLine());
-                        
-                            if (ContaDao.AdicionarConta(conta) == true)
-                            {
+
+                        if (ContaDao.AdicionarConta(conta) == true)
+                        {
                             conta.DataAberturaConta = DateTime.Now;
                             conta.SaldoAtual = conta.SaldoInicial;
                             Console.WriteLine("Conta Cadastrada com Sucesso!");
-                            }
-                            else
-                            {
-                             
-                                Console.WriteLine("Não foi possível adicionar a Conta!");
-                            }
-                        
+                        }
+                        else
+                        {
+
+                            Console.WriteLine("Não foi possível adicionar a Conta!");
+                        }
+
                         break;
+
                     case "2":
                         conta = new Conta();
                         movimentacao = new Movimentacao();
@@ -67,7 +68,7 @@ namespace BancoAndreXavier.View
                         conta = ContaDao.BuscarContaPorNumero(conta);
                         if (conta != null)
                         {
-                            
+
                             Console.WriteLine("Digite o valor do Deposito: ");
                             movimentacao.ValorDeposito = Convert.ToDouble(Console.ReadLine());
                             MovimentacaoDao.Depositar(movimentacao, conta);
@@ -91,16 +92,17 @@ namespace BancoAndreXavier.View
                         conta = ContaDao.BuscarContaPorNumero(conta);
                         if (conta != null)
                         {
-                            
+
                             Console.WriteLine("Digite o valor do Saque: ");
                             movimentacao.ValorSaque = Convert.ToDouble(Console.ReadLine());
 
-                            if (MovimentacaoDao.Sacar(movimentacao, conta) != null)
+                            if (MovimentacaoDao.(movimentacao, conta) != null)
                             {
                                 movimentacao.DataMovimentacao = DateTime.Now;
                                 MovimentacaoDao.AdicionarMovimentacao(movimentacao);
                                 Console.WriteLine("Saque Realizado com Sucesso: ");
-                            }else { Console.WriteLine("Valor insuficiente"); }
+                            }
+                            else { Console.WriteLine("Valor insuficiente"); }
                         }
                         else
                         {
@@ -117,7 +119,7 @@ namespace BancoAndreXavier.View
                         conta = ContaDao.BuscarContaPorNumero(conta);
                         if (conta != null)
                         {
-                            
+
                             Console.WriteLine(conta);
                             foreach (Movimentacao movimentacaoCadastrada in MovimentacaoDao.RetornarLista())
                             {
@@ -131,7 +133,7 @@ namespace BancoAndreXavier.View
                         }
                         break;
                     case "5":
-                        
+
                         Console.Clear();
                         Console.WriteLine(" -- Listar Contas -- \n");
                         foreach (Conta contaCadastrada in ContaDao.RetornarLista())
@@ -139,12 +141,12 @@ namespace BancoAndreXavier.View
                             Console.WriteLine("Conta: " + contaCadastrada);
                         }
                         break;
-                    
+
                 }
                 Console.WriteLine("Aperte uma tecla para continuar");
                 Console.ReadKey();
             } while (!opcao.Equals("0"));
 
         }
-        }
-            }
+    }
+}
